@@ -1,0 +1,18 @@
+.book {
+  background-color: #bcf9f9;
+  padding: 20px;
+  margin-bottom: 2.5rem;
+  border-radius: 5px;
+  line-height: 30px;
+}
+.book-title {
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 3rem;
+}
+.volume {
+  margin: 10px 0;
+}
+.volume img {
+  margin-right: 10px;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "stainsgate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "stainsgate",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop -H 0.0.0.0",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "sh build.sh"
+  },
+  "dependencies": {
+    "fslightbox-react": "^1.6.2-2",
+    "gatsby": "^4.18.0",
+    "gatsby-plugin-image": "^3.10.0",
+    "gatsby-plugin-postcss": "^5.18.0",
+    "gatsby-plugin-react-helmet": "^5.18.0",
+    "gatsby-source-contentful": "^8.10.0",
+    "gatsby-source-filesystem": "^4.18.1",
+    "gatsby-source-strapi": "^2.0.0-beta.0",
+    "gatsby-transformer-remark": "^5.18.0",
+    "lightgallery": "^2.5.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0"
+  }
+}
