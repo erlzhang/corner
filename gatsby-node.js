@@ -8,12 +8,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allContentfulPost {
+      allPost {
         totalCount
       }
     }
   `)
-  const count = result.data.allContentfulPost.totalCount;
+  const count = result.data.allPost.totalCount;
   const pageCount = Math.ceil(count / PER_PAGE);
   for (let i = 0; i < pageCount; i++) {
     let pagePath = i === 0 ? '/' : `/${i + 1}`;

@@ -10,7 +10,7 @@ import Pagination from "../components/pagination";
 export default function Index({ data, pageContext }) {
   const { currentPage, pageCount } = pageContext;
 
-  const posts_data = data.allContentfulPost.nodes;
+  const posts_data = data.allPost.nodes;
 
   const posts = posts_data.map(item => {
     return <Post item={item}></Post>
@@ -29,16 +29,15 @@ export default function Index({ data, pageContext }) {
 
 export const query = graphql`
 query PageQuery($skip: Int!, $limit: Int!) {
-  allContentfulPost(
+  allPost(
     skip: $skip,
-    sort: {order: DESC, fields: createdAt},
+    sort: {order: DESC, fields: created_at},
     limit: $limit
   ) {
     nodes {
-      createdAt(formatString: "YYYY-MM-DD HH:MM")
-      content {
-        raw
-      }
+      content
+      created_at
+      images
     }
   }
 }

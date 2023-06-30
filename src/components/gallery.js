@@ -14,13 +14,15 @@ import lgZoom from 'lightgallery/plugins/zoom';
 export default function Gallery({ images }) {
   let column = 3;
 
+  /*
   if (images.length === 2 || images.length === 4) {
     column = 2;
   } else if (images.length === 1) {
     column = 1;
   }
+  */
 
-  const width = Math.ceil(700 / column);
+  const width = Math.ceil(600 / column);
   const height = Math.ceil(width * 1);
 
   let process = 'image/resize,';
@@ -34,7 +36,7 @@ export default function Gallery({ images }) {
 
 
   const urls = images.map(img => {
-    let url = `${MEDIA_URL}${img.url}`;
+    let url = `${MEDIA_URL}${img}`;
     return (
       <a href={`${url}?x-oss-process=image/resize,l_1280`}>
         <img src={`${url}?x-oss-process=${process}`} className={`col col-${column}`}/>

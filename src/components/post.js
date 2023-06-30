@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { MEDIA_URL } from "../data/common";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Gallery from "../components/gallery";
-
-const Text = ({ children }) => <p>{children}</p>
-
-const options = {
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-  },
-}
-
+import dayjs from 'dayjs';
 
 function Content({item}) {
   const [collapsed, setCollapsed] = useState(true);
@@ -20,13 +10,13 @@ function Content({item}) {
         <div
           className="post__content content"
         >
-          {item && renderRichText(item, options)}
+          { item }
         </div>
   );
 }
 
 export default function Post({item}) {
-  const content = item.content.raw;
+  const content = item.content;
   console.warn('item', item, content);
 
   return (
@@ -37,7 +27,7 @@ export default function Post({item}) {
           <div className="post__author">
            Erl
           </div>
-			    <time className="post__datetime">{ item.createdAt}</time>
+			    <time className="post__datetime">{ dayjs(item.created_at).format('YYYY-MM-DD HH:MM')}</time>
         </div>
 			</div>
 			{
@@ -49,8 +39,8 @@ export default function Post({item}) {
         <Content item={item.content}/>
       }
       {
-        item.gallery &&
-        <Gallery images={item.gallery} />
+        item.images &&
+        <Gallery images={item.images}/>
       }
     </article>
   )
