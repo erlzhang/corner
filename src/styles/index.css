@@ -9,8 +9,8 @@
   display: flex;
 }
 .post__avatar {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 15px;
 }
@@ -47,6 +47,7 @@
   margin-left: -3px;
   margin-right: -3px;
   width: calc(100% + 6px);
+  margin-top: 10px;
 }
 .gallery-preview::after {
   content: "";
