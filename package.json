@@ -15,7 +15,10 @@
     "deploy": "sh build.sh"
   },
   "dependencies": {
+    "ali-oss": "^6.17.1",
+    "busboy": "^1.6.0",
     "dayjs": "^1.11.8",
+    "faunadb": "^4.8.0",
     "fslightbox-react": "^1.6.2-2",
     "gatsby": "^4.18.0",
     "gatsby-plugin-image": "^3.10.0",
@@ -27,8 +30,10 @@
     "gatsby-source-strapi": "^2.0.0-beta.0",
     "gatsby-transformer-remark": "^5.18.0",
     "lightgallery": "^2.5.0",
+    "node-fetch": "^2.6.12",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "uuid": "^9.0.0"
   }
 }
