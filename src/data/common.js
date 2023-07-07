@@ -1,2 +1,2 @@
 
-export const MEDIA_URL = "https://erlgallery.oss-cn-beijing.aliyuncs.com/";
+export const MEDIA_URL = "https://erlblog.oss-cn-hangzhou.aliyuncs.com/";
