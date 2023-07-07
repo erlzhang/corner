@@ -5,8 +5,14 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Stainsgate`,
+    title: `Erl`,
+    name: 'Erl',
     siteUrl: `http://corner.erl.im`,
+    description: `
+      Erl的自留地，日常，吐槽
+    `,
+    avatar: 'https://erlim.oss-cn-hongkong.aliyuncs.com/img/avatar.jpg',
+    cover: 'https://erlim.oss-cn-hongkong.aliyuncs.com/img/sky/image.jpg'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

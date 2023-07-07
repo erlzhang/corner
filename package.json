@@ -17,6 +17,7 @@
   "dependencies": {
     "dayjs": "^1.11.8",
     "faunadb": "^4.8.0",
+    "feather-icons": "^4.29.0",
     "fslightbox-react": "^1.6.2-2",
     "gatsby": "^4.18.0",
     "gatsby-plugin-image": "^3.10.0",

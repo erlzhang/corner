@@ -8,6 +8,7 @@ import Layout from "../components/layout";
 import Pagination from "../components/pagination";
 
 export default function Index({ data, pageContext }) {
+  const site = data.site.siteMetadata;
   const { currentPage, pageCount } = pageContext;
 
   const posts_data = data.allPost.nodes;
@@ -17,7 +18,12 @@ export default function Index({ data, pageContext }) {
   });
 
   return (
-    <Layout siteInfo={{}}>
+    <Layout siteInfo={site}>
+      <div className="devider">
+        <div className="devider-content">
+          共{ data.all.totalCount }条状态
+        </div>
+      </div>
       { posts }
       <Pagination
         currentPage={currentPage}
@@ -29,6 +35,15 @@ export default function Index({ data, pageContext }) {
 
 export const query = graphql`
 query PageQuery($skip: Int!, $limit: Int!) {
+  site {
+    siteMetadata {
+      avatar
+      description
+      siteUrl
+      title
+      cover
+    }
+  }
   allPost(
     skip: $skip,
     sort: {order: DESC, fields: created_at},
@@ -39,6 +54,10 @@ query PageQuery($skip: Int!, $limit: Int!) {
       created_at
       images
     }
+  }
+
+  all: allPost {
+    totalCount
   }
 }
 `

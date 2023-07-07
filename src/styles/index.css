@@ -22,9 +22,9 @@
   font-size: 1rem;
   color: var(--dark);
 }
-.post_datetime {
-  vertical-align: top;
-  display: inline-block;
+.post__datetime {
+  color: var(-gray);
+  font-size: 0.75rem;
 }
 .post__title {
 	font-size: 1.75rem;

@@ -9,7 +9,7 @@ export default function Layout({ children, siteInfo }) {
     <div className="container">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>trace-demo</title>
+        <title>{ siteInfo.title }</title>
       </Helmet>
       <Header siteInfo={siteInfo}/>
       <main className="posts">
