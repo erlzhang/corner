@@ -1,6 +1,7 @@
 .post {
-  margin: 1.75rem 0 2.5rem;
-  padding: 15px;
+  margin: 1.75rem 0;
+  padding: 0 15px 1.5rem;
+  border-bottom: 1px solid var(--lightest);
 }
 .post__header {
   color: var(--grayer);
@@ -32,8 +33,7 @@
 	margin: 0 0 1rem 0;
   text-align: center;
 }
-.post__content p {
-  margin-bottom: 10px;
+.post__content {
   line-height: 1.35rem;
 }
 .post__content p img {
@@ -91,6 +91,7 @@
 }
 .pagination {
   margin-top: 20px;
+  padding: 0 15px;
 }
 .pagination::after {
   display: block;
