@@ -92,7 +92,21 @@ body {
   display: block;
   cursor: pointer;
   font-size: 0.75rem;
-  margin: 35px 0;
+  margin: 15px 0;
+  background: none;
+  height: 30px;
+  padding: 7px 0;
+  position: relative;
+}
+.comment-devider::after {
+  content: "";
+  display: block;
+  background-color: var(--lightest);
+  height: 1px;
+  top: 15px;
+  width: 100%;
+  position: absolute;
+  left: 0;
 }
 .devider-content {
   position: relative;
@@ -100,6 +114,10 @@ body {
   padding: 0 10px;
   background-color: white;
   top: -8px;
+}
+.comment-devider .devider-content {
+  top: 0;
+  z-index: 1;
 }
 .footer {
   color: gray;

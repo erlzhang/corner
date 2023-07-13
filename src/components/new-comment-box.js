@@ -8,7 +8,7 @@ import {
 } from "../data/common"
 import md5 from "md5"
 
-export default function NewCommentBox({ onClose, id, triggerLoad }) {
+export default function NewCommentBox({ onClose, id, triggerLoad, replyTo }) {
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -17,9 +17,10 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
   });
 
   const [loaded, setLoaded] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const setUser = (data) => {
-    console.log('in set user', fields);
     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({
       name: data.name,
       email: data.email,
@@ -49,7 +50,6 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
   });
 
   const handleChange = (e) => {
-    console.warn('in handle change', e);
     let data = {
       ...fields,
       [e.target.name]: e.target.value
@@ -59,16 +59,19 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
   }
 
   const submit = (e) => {
+    setShowError(false);
+    setLoading(true);
     e.preventDefault();
-    console.warn('on submit', fields);
     axios.post(API_URL + "comments", {
       ...fields,
       post_id: Number(id),
-      created_at: new Date().getTime()
+      created_at: new Date().getTime(),
+      parent: replyTo && replyTo.id
     }).then(res => {
       triggerLoad();
       onClose();
-    }).catch(e => console.error(e));
+    }).catch(e => setShowError(true))
+    .finally(e => setLoading(false))
   }
 
   return (
@@ -80,6 +83,13 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
           src={`${GRAVATAR_URL}${ md5(fields.email) }?d=mm&s=30`}
           className="comment-dialog-avatar"
         />
+          {
+            replyTo &&
+            <span className="dialog-reply">
+              回复给
+              <strong className="dialog-reply">{ replyTo.name }</strong>
+            </span>
+          }
         <a
            className="icon close-btn"
           onClick={onClose}
@@ -88,6 +98,12 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
 
           </div>
           <form>
+            {
+              showError &&
+            <div className="comment__error_msg">
+              失败了，不知道咋回事儿~
+            </div>
+            }
             <div class="comment__box">
        <div class="comment__box_top hide" id="visitorInfo">
          <div class="input-group">
@@ -153,7 +169,14 @@ export default function NewCommentBox({ onClose, id, triggerLoad }) {
           type="submit" class="submit-btn" id="submitBtn"
           onClick={submit}
         >
-          发布
+          {
+            loading ?
+            <span
+              classNmae="icon icon-loading"
+              dangerouslySetInnerHTML={{ __html: feather.icons.loader.toSvg({width: 16, height: 16}) }}
+            ></span> :
+            '发布'
+          }
         </button>
       </div>
     </div>

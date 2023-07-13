@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import dayjs from 'dayjs';
 import {
   GRAVATAR_URL
 } from "../data/common";
 
 const formatUrl = (url) => {
+  if (!url) {
+    return url;
+  }
   if (url.includes('http')) {
     return url;
   } else {
@@ -12,7 +14,7 @@ const formatUrl = (url) => {
   }
 }
 
-export default function Comment({ item, children }) {
+export default function Comment({ item, children, onReply }) {
   return (
     <div className="comment">
       <div className="comment__main">
@@ -29,12 +31,31 @@ export default function Comment({ item, children }) {
               rel="nofollow"
             >{ item.name }</a>
             <time className="comment__time">
-              { dayjs(item.created_at).format('YYYY-MM-DD HH:MM') }
+              { new Date(item.created_at).toLocaleString() }
             </time>
+            <a
+              className="comment__reply_btn"
+              onClick={() => onReply(item)}
+            >[回复]</a>
           </div>
           <div className="comment__content">
           { item.content }
           </div>
+          {
+            item.children.length > 0 &&
+            <div className="comments">
+              {
+                item.children.map(child => {
+                  return (
+                  <Comment
+                    item={child}
+                    onClick={() => onReply(child)}
+                  />
+                  )
+                })
+              }
+            </div>
+          }
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MEDIA_URL } from "../data/common";
 import Gallery from "../components/gallery";
-import dayjs from 'dayjs';
 import CommentBox from "./comments";
 import feather from "feather-icons";
 
@@ -28,7 +27,9 @@ export default function Post({item, focused, onfocus}) {
           <div className="post__author">
            Erl
           </div>
-			    <time className="post__datetime">{ dayjs(item.created_at).format('YYYY-MM-DD HH:MM')}</time>
+			    <time className="post__datetime">
+            { new Date(item.created_at).toLocaleString() }
+          </time>
         </div>
 			</div>
 			{

@@ -12,19 +12,48 @@ import axios from "axios";
 import feather from "feather-icons";
 import md5 from "md5"
 
+const groupCommentsTree = (data) => {
+  const _mapById = {};
+  const nodes = data.map(item => {
+    const id = Number(item.id['@ref'].id);
+    const node = {
+      ...item,
+      id,
+      children: []
+    };
+    _mapById[id] = node;
+    return node;
+  });
+
+  const tree = [];
+
+  nodes.forEach(node => {
+    if (!node.parent) {
+      tree.push(node);
+    } else {
+      const pNode = _mapById[node.parent];
+      if (pNode) {
+        pNode.children.push(node)
+      }
+    }
+  });
+  return tree;
+}
+
 export default function CommentBox({id}) {
   const [showDialog, setShowDialog] = useState(false);
   const [list, setList] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
+  const [replyTo, setReplyTo] = useState(null);
 
   const loadData = () => {
     setLoading(true);
     return axios.get(API_URL + 'comments/' + id)
       .then(res => {
         setLoading(false);
-        return setList(res.data.data);
+        return setList(groupCommentsTree(res.data.data));
       });
   }
 
@@ -51,21 +80,33 @@ export default function CommentBox({id}) {
 
   const comments = list.map(item => {
     return (
-      <Comment item={item}/>
+      <Comment
+        item={item}
+        onReply={(_item) => {
+          setReplyTo({
+            id: _item.id,
+            name: _item.name
+          })
+          setShowDialog(true)
+        }}
+      />
     )
   })
   return (
     <div className="comment-box">
       <NewComment
         email={email}
-        onFocus={() => setShowDialog(true)}
+        onFocus={() => {
+          setShowDialog(true)
+          setReplyTo(null);
+        }}
       ></NewComment>
       <div className="comment-list">
         {
           loading &&
           <div className="comment-list-loading">
             <span
-              classNmae="icon"
+              classNmae="icon icon-loading"
               dangerouslySetInnerHTML={{ __html: feather.icons.loader.toSvg({width: 24, height: 24}) }}
             ></span>
           </div>
@@ -80,6 +121,7 @@ export default function CommentBox({id}) {
         showDialog &&
         <NewCommentBox
           id={id}
+          replyTo={replyTo}
           onClose={() => {
             setShowDialog(false);
             updateAvatar();

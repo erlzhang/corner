@@ -165,7 +165,7 @@
   }
 }
 
-.comment-list-loading svg {
+.icon-loading svg {
   animation: spin 3s linear infinite;
 }
 .comment-blank-state {
@@ -173,4 +173,15 @@
   text-align: center;
   color: var(--gray);
   font-size: 0.875rem;
+}
+.comment__reply_btn {
+  margin-left: 10px;
+  cursor: pointer;
+  float: right;
+  font-size: 0.75rem;
+}
+.dialog-reply {
+}
+.dialog-reply strong {
+  margin-left: 5px;
 }
