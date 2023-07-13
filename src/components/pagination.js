@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 
 export default function Pagination({ currentPage, pageCount }) {
   let prev = currentPage > 1 && currentPage - 1;
@@ -11,11 +12,11 @@ export default function Pagination({ currentPage, pageCount }) {
     <div className="pagination">
       {
         prev &&
-        <a className="nav-link prev" href={prevUrl}>← 上一页</a>
+        <Link className="nav-link prev" to={prevUrl}>← 上一页</Link>
       }
       {
         next &&
-        <a className="nav-link next" href={nextUrl}>下一页 →</a>
+        <Link className="nav-link next" to={nextUrl}>下一页 →</Link>
       }
     </div>
   )
