@@ -88,6 +88,12 @@ body {
   text-align: center;
   overflow: visible;
 }
+.comment-devider {
+  display: block;
+  cursor: pointer;
+  font-size: 0.75rem;
+  margin: 35px 0;
+}
 .devider-content {
   position: relative;
   display: inline-block;
@@ -101,4 +107,8 @@ body {
   margin-top: 4.5rem;
   font-size: 0.75rem;
   text-align: center;
+}
+.icon svg {
+  vertical-align: middle;
+  margin-right: 5px;
 }

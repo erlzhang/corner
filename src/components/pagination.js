@@ -12,7 +12,7 @@ export default function Pagination({ currentPage, pageCount }) {
     <div className="pagination">
       {
         prev &&
-        <Link className="nav-link prev" to={prevUrl}>← 上一页</Link>
+        <Link className="nav-link prev" to={prevUrl}> ←上一页</Link>
       }
       {
         next &&

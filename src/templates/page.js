@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import "../styles/index.css"
@@ -11,10 +11,23 @@ export default function Index({ data, pageContext }) {
   const site = data.site.siteMetadata;
   const { currentPage, pageCount } = pageContext;
 
+  const [focused, setFocused] = useState(null);
+
   const posts_data = data.allPost.nodes;
 
   const posts = posts_data.map(item => {
-    return <Post item={item}></Post>
+    return <Post
+      item={item}
+      focused={focused === item._id}
+      onfocus={() => {
+        if (focused === item._id) {
+          setFocused(null);
+        } else {
+          setFocused(item._id);
+        }
+        console.warn('on focused');
+      }}
+    ></Post>
   });
 
   return (
@@ -53,6 +66,7 @@ query PageQuery($skip: Int!, $limit: Int!) {
       content
       created_at
       images
+      _id
     }
   }
 

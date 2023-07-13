@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { MEDIA_URL } from "../data/common";
 import Gallery from "../components/gallery";
 import dayjs from 'dayjs';
+import CommentBox from "./comments";
+import feather from "feather-icons";
 
 function Content({item}) {
   const [collapsed, setCollapsed] = useState(true);
@@ -15,9 +17,8 @@ function Content({item}) {
   );
 }
 
-export default function Post({item}) {
+export default function Post({item, focused, onfocus}) {
   const content = item.content;
-  console.warn('item', item, content);
 
   return (
     <article className="post">
@@ -41,6 +42,18 @@ export default function Post({item}) {
       {
         item.images &&
         <Gallery images={item.images}/>
+      }
+      <a
+        className="devider comment-devider"
+        onClick={onfocus}
+      >
+      <div className="devider-content">
+        {focused ? '收起' : '展开'}评论
+      </div>
+      </a>
+      {
+        focused &&
+        <CommentBox id={item._id}/>
       }
     </article>
   )

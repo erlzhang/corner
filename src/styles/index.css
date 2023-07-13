@@ -1,7 +1,6 @@
 .post {
   margin: 1.75rem 0;
-  padding: 0 15px 1.5rem;
-  border-bottom: 1px solid var(--lightest);
+  padding: 0 15px;
 }
 .post__header {
   color: var(--grayer);
@@ -79,15 +78,7 @@
 	color: var(--gray);
 	line-height: 20px;
 	margin: 20px 0;
-}
-.post__footer span {
-	margin-right: 20px;
-}
-.post__footer img {
-	width: 16px;
-	height: 16px;
-	margin-right: 5px;
-	vertical-align: middle;
+  display: flex;
 }
 .pagination {
   margin-top: 20px;
@@ -97,6 +88,11 @@
   display: block;
   content: "";
   clear: both;
+}
+.post__footer-action {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 .nav-link {
   line-height: 60px;

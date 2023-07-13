@@ -15,6 +15,7 @@
     "deploy": "sh build.sh"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "dayjs": "^1.11.8",
     "faunadb": "^4.8.0",
     "feather-icons": "^4.29.0",
@@ -29,6 +30,7 @@
     "gatsby-source-strapi": "^2.0.0-beta.0",
     "gatsby-transformer-remark": "^5.18.0",
     "lightgallery": "^2.5.0",
+    "md5": "^2.3.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0"
