@@ -106,3 +106,13 @@
   float: right;
   text-align: right;
 }
+.top-badge {
+  display: inline-block;
+    padding: 2px 8px;
+    background-color: var(--red);
+    margin-left: 10px;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 3px;
+    vertical-align: top;
+}

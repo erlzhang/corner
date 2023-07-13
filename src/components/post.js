@@ -26,6 +26,10 @@ export default function Post({item, focused, onfocus}) {
         <div className="post__meta">
           <div className="post__author">
            Erl
+           {
+              item.top &&
+               <span className="top-badge">置顶</span>
+           }
           </div>
 			    <time className="post__datetime">
             { new Date(item.created_at).toLocaleString() }
