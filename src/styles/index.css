@@ -34,6 +34,7 @@
 }
 .post__content {
   line-height: 1.35rem;
+  white-space: pre-wrap;
 }
 .post__content p img {
   max-width: 100%;
