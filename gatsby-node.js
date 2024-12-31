@@ -5,6 +5,7 @@ require("dotenv").config({
 })
 
 const BASE_URL = process.env.API;
+console.log('BASE_URL', BASE_URL);
 
 const getPosts = () => {
   return axios.get(BASE_URL + '/posts')
