@@ -30,17 +30,10 @@ export default async (event, context) => {
             const res = await fetch(BASE_URL + '/comments/' + id);
             console.log('res', res)
             const data = await res.json();
-            console.log('data', data)
-            if (data.code) {
-                return {
-                    statusCode: 200,
-                    body: data.data
-                };
-            } else {
-                return {
-                    statusCode: 500,
-                }
-            }
+            return {
+                statusCode: 200,
+                body: JSON.stringify(data)
+            };
         } catch(error) {
             return { statusCode: 500, body: error.toString() };
         }
