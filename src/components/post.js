@@ -48,7 +48,7 @@ export default function Post({item, focused, onfocus}) {
         item.images &&
         <Gallery images={item.images}/>
       }
-      {/* <a
+      <a
         className="devider comment-devider"
         onClick={onfocus}
       >
@@ -59,7 +59,7 @@ export default function Post({item, focused, onfocus}) {
       {
         focused &&
         <CommentBox id={item.id}/>
-      } */}
+      }
     </article>
   )
 }
