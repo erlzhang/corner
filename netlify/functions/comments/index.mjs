@@ -8,7 +8,8 @@ export default async (event, context) => {
     const { id } = context.params
     if (event.method === 'POST' && id === 'create') {
         try {
-            const res = await fetch(BASE_URL + '/comments', {method: 'POST', body: event.body});
+            const body = await event.json();
+            const res = await fetch(BASE_URL + '/comments', {method: 'POST', body: JSON.stringify(body)});
             console.log('res', res)
             const data = await res.json();
             console.log('data', data)
