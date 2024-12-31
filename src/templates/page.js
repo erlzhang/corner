@@ -67,6 +67,7 @@ query PageQuery($skip: Int!, $limit: Int!) {
       createdAt
       images
       id
+      _id
     }
   }
 

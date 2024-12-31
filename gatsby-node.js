@@ -23,11 +23,11 @@ exports.sourceNodes = async ({
   const { createNode, createNodeField } = actions
   const posts = await getPosts()
   posts.forEach(post => {
-    post.id = post.createdAt;
+    post._id = post.createdAt;
     createNode({
       ...post,
       name: post.id,
-      id: createNodeId(`book-${post.id}`),
+      id: createNodeId(`post-${post._id}`),
       internal: {
         type: 'post',
         content: JSON.stringify(post),

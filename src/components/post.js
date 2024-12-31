@@ -58,7 +58,7 @@ export default function Post({item, focused, onfocus}) {
       </a>
       {
         focused &&
-        <CommentBox id={item.id}/>
+        <CommentBox id={item._id}/>
       }
     </article>
   )
