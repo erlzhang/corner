@@ -32,7 +32,7 @@ export default function Post({item, focused, onfocus}) {
            }
           </div>
 			    <time className="post__datetime">
-            { new Date(item.created_at).toLocaleString() }
+            { new Date(item.createdAt).toLocaleString() }
           </time>
         </div>
 			</div>
@@ -58,7 +58,7 @@ export default function Post({item, focused, onfocus}) {
       </a>
       {
         focused &&
-        <CommentBox id={item._id}/>
+        <CommentBox id={item.id}/>
       }
     </article>
   )

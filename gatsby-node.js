@@ -1,5 +1,40 @@
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
+const axios = require('axios')
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const BASE_URL = process.env.API;
+
+const getPosts = () => {
+  return axios.get(BASE_URL + '/posts')
+    .then(res => {
+      return res.data.data;
+    })
+}
+
+exports.sourceNodes = async ({
+  actions,
+  createContentDigest,
+  createNodeId,
+  getNodesByType,
+}) => {
+  const { createNode, createNodeField } = actions
+  const posts = await getPosts()
+  posts.forEach(post => {
+    post.id = post.createdAt;
+    createNode({
+      ...post,
+      name: post.id,
+      id: createNodeId(`book-${post.id}`),
+      internal: {
+        type: 'post',
+        content: JSON.stringify(post),
+        contentDigest: createContentDigest(post),
+      },
+    });
+  })
+}
 
 // Pagination
 const PER_PAGE = 5;

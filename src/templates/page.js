@@ -59,14 +59,14 @@ query PageQuery($skip: Int!, $limit: Int!) {
   }
   allPost(
     skip: $skip,
-    sort: {order: [ASC, DESC], fields: [top, created_at]},
+    sort: {order: [ASC, DESC], fields: [top, createdAt]},
     limit: $limit
   ) {
     nodes {
       content
-      created_at
+      createdAt
       images
-      _id
+      id
       top
     }
   }
