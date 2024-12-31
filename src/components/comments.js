@@ -74,7 +74,7 @@ export default function CommentBox({id}) {
       .then(res => {
         setLoaded(true);
       });
-  });
+  }, []);
 
   const comments = list.map(item => {
     return (
