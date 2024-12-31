@@ -19,7 +19,7 @@ const groupCommentsTree = (data) => {
       ...item,
       children: []
     };
-    _mapById[id] = node;
+    _mapById[item.id] = node;
     return node;
   });
 
@@ -48,7 +48,7 @@ export default function CommentBox({id}) {
 
   const loadData = () => {
     setLoading(true);
-    return axios.get(API_URL + 'comments/' + id)
+    return axios.get(API_URL + 'comments/list/' + id)
       .then(res => {
         setLoading(false);
         return setList(groupCommentsTree(res.data.data));
