@@ -48,7 +48,7 @@ export default function CommentBox({id}) {
 
   const loadData = () => {
     setLoading(true);
-    return axios.get(API_URL + 'comments/list/' + id)
+    return axios.get(API_URL + 'list/' + id)
       .then(res => {
         setLoading(false);
         return setList(groupCommentsTree(res.data.data));
