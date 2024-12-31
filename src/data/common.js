@@ -1,4 +1,4 @@
-export const MEDIA_URL = "https://erlblog.oss-cn-hangzhou.aliyuncs.com/";
+export const MEDIA_URL = "https://erlim.oss-cn-hongkong.aliyuncs.com/";
 
 export const API_URL = "https://blog-api-guide-hlo-world-qagslubwmh.cn-hangzhou.fcapp.run/";
 
