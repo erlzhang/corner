@@ -10,7 +10,7 @@ export default async (event, context) => {
         try {
             const res = await fetch(BASE_URL + '/comments', {method: 'POST', body: event.body});
             console.log('res', res)
-            const data = JSON.parse(res.body);
+            const data = res.json();
             if (data.code) {
                 return {
                     statusCode: 200,
@@ -28,7 +28,7 @@ export default async (event, context) => {
         try {
             const res = await fetch(BASE_URL + '/comments/' + id);
             console.log('res', res)
-            const data = JSON.parse(res.body);
+            const data = res.json();
             if (data.code) {
                 return {
                     statusCode: 200,
