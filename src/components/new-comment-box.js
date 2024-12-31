@@ -62,7 +62,7 @@ export default function NewCommentBox({ onClose, id, triggerLoad, replyTo }) {
     setShowError(false);
     setLoading(true);
     e.preventDefault();
-    axios.post(API_URL + "create", {
+    axios.post(API_URL + '/' + id, {
       ...fields,
       post_id: Number(id),
       created_at: new Date().getTime(),

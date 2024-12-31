@@ -6,20 +6,22 @@ const BASE_URL = process.env.API;
 export default async (event, context) => {
     console.log('method', event.method, context);
     const { id } = context.params
-    if (event.method === 'POST' && id === 'create') {
+    if (event.method === 'POST') {
         try {
             const body = await event.json();
-            const res = await fetch(BASE_URL + '/comments', {method: 'POST', body: JSON.stringify(body)});
+            const res = await fetch(BASE_URL + '/comments/' + id, {method: 'POST', body: JSON.stringify(body)});
             console.log('res', res)
             const data = await res.json();
             console.log('data', data)
             if (data.code) {
                 return {
                     statusCode: 200,
+                    body: ''
                 };
             } else {
                 return {
                     statusCode: 500,
+                    body: ''
                 }
             }
         } catch(error) {
