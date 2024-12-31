@@ -1,6 +1,6 @@
 export const MEDIA_URL = "https://erlim.oss-cn-hongkong.aliyuncs.com/";
 
-export const API_URL = "/.netlify/functions/comments/";
+export const API_URL = "/comments/";
 
 export const GRAVATAR_URL = "https://cravatar.cn/avatar/"
 
