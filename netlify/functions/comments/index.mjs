@@ -11,6 +11,7 @@ export default async (event, context) => {
             const res = await fetch(BASE_URL + '/comments', {method: 'POST', body: event.body});
             console.log('res', res)
             const data = res.json();
+            console.log('data', data)
             if (data.code) {
                 return {
                     statusCode: 200,
@@ -20,7 +21,7 @@ export default async (event, context) => {
                     statusCode: 500,
                 }
             }
-        } catch(err) {
+        } catch(error) {
             return { statusCode: 500, body: error.toString() };
         }
     } else {
@@ -29,6 +30,7 @@ export default async (event, context) => {
             const res = await fetch(BASE_URL + '/comments/' + id);
             console.log('res', res)
             const data = res.json();
+            console.log('data', data)
             if (data.code) {
                 return {
                     statusCode: 200,
@@ -39,7 +41,7 @@ export default async (event, context) => {
                     statusCode: 500,
                 }
             }
-        } catch(err) {
+        } catch(error) {
             return { statusCode: 500, body: error.toString() };
         }
     }
