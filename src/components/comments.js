@@ -15,10 +15,8 @@ import md5 from "md5"
 const groupCommentsTree = (data) => {
   const _mapById = {};
   const nodes = data.map(item => {
-    const id = Number(item.id['@ref'].id);
     const node = {
       ...item,
-      id,
       children: []
     };
     _mapById[id] = node;

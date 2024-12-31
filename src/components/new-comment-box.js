@@ -66,7 +66,8 @@ export default function NewCommentBox({ onClose, id, triggerLoad, replyTo }) {
       ...fields,
       post_id: Number(id),
       created_at: new Date().getTime(),
-      parent: replyTo && replyTo.id
+      parent: replyTo && replyTo.id,
+      id: md5(fields.name + new Date().getTime())
     }).then(res => {
       triggerLoad();
       onClose();
