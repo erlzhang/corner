@@ -11,10 +11,10 @@ function CollapsedContent({content}) {
     <>
       { collapsed ? 
         <>
-          content.slice(0, 200)
+          { content.slice(0, 200) }
           <span
             className="read-more"
-            onClick={() => setCollapsed(true)}
+            onClick={() => setCollapsed(false)}
           >[全文]</span>
         </> :
         content
