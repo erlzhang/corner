@@ -68,6 +68,7 @@ query PageQuery($skip: Int!, $limit: Int!) {
       images
       id
       _id
+      top
     }
   }
 
