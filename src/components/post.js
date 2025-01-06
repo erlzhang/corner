@@ -4,6 +4,8 @@ import Gallery from "../components/gallery";
 import CommentBox from "./comments";
 import feather from "feather-icons";
 
+const collapsedLength = 120;
+
 function CollapsedContent({content}) {
   const [collapsed, setCollapsed] = useState(true);
 
@@ -11,7 +13,7 @@ function CollapsedContent({content}) {
     <>
       { collapsed ? 
         <>
-          { content.slice(0, 200) }
+          { content.slice(0, collapsedLength) }
           <span
             className="read-more"
             onClick={() => setCollapsed(false)}
@@ -29,7 +31,7 @@ function Content({item}) {
           className="post__content content"
         >
           {
-            item.length > 200 ?
+            item.length > collapsedLength ?
             <CollapsedContent content={item}/> :
             item
           }
