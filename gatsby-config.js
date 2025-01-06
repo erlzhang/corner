@@ -9,7 +9,7 @@ module.exports = {
     name: 'Erl',
     siteUrl: `http://corner.erl.im`,
     description: `
-      Erl的自留地，日常，吐槽
+      Erl的自留地，纯流水账，记录日常生活点滴
     `,
     avatar: 'https://erlim.oss-cn-hongkong.aliyuncs.com/img/avatar.jpg',
     cover: 'https://erlim.oss-cn-hongkong.aliyuncs.com/img/sky/image.jpg'
