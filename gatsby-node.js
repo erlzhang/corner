@@ -38,7 +38,7 @@ exports.sourceNodes = async ({
 }
 
 // Pagination
-const PER_PAGE = 5;
+const PER_PAGE = 10;
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
