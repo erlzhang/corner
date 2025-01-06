@@ -59,7 +59,7 @@ query PageQuery($skip: Int!, $limit: Int!) {
   }
   allPost(
     skip: $skip,
-    sort: {order: [DESC], fields: [createdAt]},
+    sort: {order: [ASC, DESC], fields: [top, createdAt]},
     limit: $limit
   ) {
     nodes {
