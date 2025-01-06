@@ -30,7 +30,7 @@ function Content({item}) {
         >
           {
             item.length > 200 ?
-            <CollapsedContent content="item"/> :
+            <CollapsedContent content={item}/> :
             item
           }
         </div>
