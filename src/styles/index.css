@@ -42,6 +42,13 @@
 .post__content.excerpt {
   cursor: pointer;
 }
+.read-more {
+  color: var(--blue);
+  text-decoration: underline;
+  margin-left: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
 
 .gallery-preview {
   margin-left: -3px;

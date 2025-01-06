@@ -4,14 +4,35 @@ import Gallery from "../components/gallery";
 import CommentBox from "./comments";
 import feather from "feather-icons";
 
-function Content({item}) {
+function CollapsedContent({content}) {
   const [collapsed, setCollapsed] = useState(true);
 
+  return(
+    <>
+      { collapsed ? 
+        <>
+          content.slice(0, 200)
+          <span
+            className="read-more"
+            onClick={() => setCollapsed(true)}
+          >[全文]</span>
+        </> :
+        content
+      }
+    </>
+);
+}
+
+function Content({item}) {
   return (
         <div
           className="post__content content"
         >
-          { item }
+          {
+            item.length > 200 ?
+            <CollapsedContent content="item"/> :
+            item
+          }
         </div>
   );
 }
